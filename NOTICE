@@ -1,0 +1,6 @@
+Gator Lib Shiro
+Copyright (C) 2018-2026 Sergio Basurto Juárez
+
+This project uses Apache Shiro under the Apache License 2.0 and depends on
+gator-lib. That project preserves its own third-party attribution and license
+notices.
