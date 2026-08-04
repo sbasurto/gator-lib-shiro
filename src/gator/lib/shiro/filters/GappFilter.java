@@ -140,13 +140,15 @@ public class GappFilter implements Filter {
                         CookieMonster monster = new CookieMonster();
                         GappCookie gappCookie;
                         HttpServletRequest httpReq = (HttpServletRequest) req;
+                        boolean webpage = "webpage".equals(req.getServletContext().getInitParameter("shiroConfigName"));
                         if (currentUser.isAuthenticated()
+                                && !webpage
                                 && !Boolean.TRUE.equals(session.getAttribute("login.challenge.verified"))
                                 && !isChallengeAllowed(httpReq)) {
                                 ((HttpServletResponse) res).sendRedirect(httpReq.getContextPath() + "/forms2/choose_server2.jsp");
                                 return;
                         }
-                        String manageRedirect = session.getAttribute("manageredirect") == null?"0":(String) session.getAttribute("manageredirect");
+                        String manageRedirect = webpage || session.getAttribute("manageredirect") == null?"0":(String) session.getAttribute("manageredirect");
                         logs.logIt("GappFilter.doFilter", "I will manage redirect: " + manageRedirect, "shiro", "gapprealm", 0);
                         if(httpReq.getHeader("Cookie") != null && manageRedirect.equals("1")) {
                             logs.logIt("GappFilter.doFilter", "Eating cookie jar at filter yumi, yumi!", "shiro", "gapprealm", 0);
