@@ -41,3 +41,8 @@ prueba ejecutable del ciclo de vida de las sesiones.
 ## Licencia
 
 GPL-3.0-or-later. Consulte [LICENSE](LICENSE) y [NOTICE](NOTICE).
+
+Los objetos de datos de sesión se trasladaron a `gator.lib.session` en
+`gator-lib`. Recompilar los consumidores y empaquetar las bibliotecas juntas;
+las clases ya no están disponibles en `gator.lib.shiro.sessions`.
+El JSON de sesión conserva el mismo formato.
